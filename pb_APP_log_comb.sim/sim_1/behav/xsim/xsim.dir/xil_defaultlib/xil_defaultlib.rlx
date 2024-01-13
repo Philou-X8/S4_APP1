@@ -1,0 +1,12 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sim_1/imports/verif/AppCombi_top_tb.vhd,1705069084,vhdl2008,,,,appcombi_top_tb,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/AppCombi_top.vhd,1705069084,vhdl2008,,,,appcombi_top,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_Top.vhd,1705069084,vhdl2008,,,,septsegments_top,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_encodeur.vhd,1705069084,vhdl2008,,,,septsegments_encodeur,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_refreshPmod.vhd,1705069084,vhdl2008,,,,septsegments_refreshpmod,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/synchro_module_v2.vhd,1705069084,vhdl2008,,,,synchro_module_v2,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitA.vhd,1705073577,vhdl,,,,add1bita,,,,,,,,
+F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitB.vhd,1705073512,vhdl,,,,add1bitb,,,,,,,,

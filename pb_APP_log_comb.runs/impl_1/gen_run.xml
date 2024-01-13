@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1705074076">
+  <File Type="BITSTR-BMM" Name="Add1bitB_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Add1bitB_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="Add1bitB_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="Add1bitB_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Add1bitB.tcl"/>
+  <File Type="OPT-TIMING" Name="Add1bitB_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="Add1bitB_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="Add1bitB_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="Add1bitB_reports.tcl"/>
+  <File Type="OPT-DRC" Name="Add1bitB_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Add1bitB.hwdef"/>
+  <File Type="PWROPT-DCP" Name="Add1bitB_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="Add1bitB_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="Add1bitB_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="Add1bitB_placed.dcp"/>
+  <File Type="PLACE-IO" Name="Add1bitB_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Add1bitB_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Add1bitB_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Add1bitB_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Add1bitB_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Add1bitB_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Add1bitB_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="Add1bitB_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Add1bitB_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="Add1bitB.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Add1bitB_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Add1bitB_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="Add1bitB_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="Add1bitB.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="Add1bitB_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Add1bitB_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="Add1bitB_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Add1bitB_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="Add1bitB_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Add1bitB_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Add1bitB_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="Add1bitB.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Add1bitB_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Add1bitB_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Add1bitB_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="Add1bitB_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="Add1bitB_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Add1bitB_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Add1bitB_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Add1bitB_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Add1bitB_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Add1bitB_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Add1bitB_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Add1bitB_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Add1bitB_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Add1bitB_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Add1bitB_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Add1bitB_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Add1bitB_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Add1bitB_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Add1bitB_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Add1bitB_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Add1bitB_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="Add1bitB.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Add1bitB_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="Add1bitB.rbt"/>
+  <File Type="BITSTR-NKY" Name="Add1bitB.nky"/>
+  <File Type="PDI-FILE" Name="Add1bitB.pdi"/>
+  <File Type="RCFI_FILE" Name="Add1bitB.rcfi"/>
+  <File Type="CFI_FILE" Name="Add1bitB.cfi"/>
+  <File Type="RNPI_FILE" Name="Add1bitB.rnpi"/>
+  <File Type="NPI_FILE" Name="Add1bitB.npi"/>
+  <File Type="RBD_FILE" Name="Add1bitB.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Add1bitB.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="Add1bitB.sysdef"/>
+  <File Type="BG-BGN" Name="Add1bitB.bgn"/>
+  <File Type="BG-DRC" Name="Add1bitB.drc"/>
+  <File Type="RDI-RDI" Name="Add1bitB.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/src/septSegments_encodeur.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/septSegments_encodeur.vhd"/>
+        <Attr Name="ImportTime" Val="1635539909"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/src/septSegments_refreshPmod.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/septSegments_refreshPmod.vhd"/>
+        <Attr Name="ImportTime" Val="1651164618"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/src/septSegments_Top.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/septSegments_Top.vhd"/>
+        <Attr Name="ImportTime" Val="1651164797"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/src/synchro_module_v2.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/synchro_module_v2.vhd"/>
+        <Attr Name="ImportTime" Val="1635539909"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/src/AppCombi_top.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/AppCombi_top.vhd"/>
+        <Attr Name="ImportTime" Val="1651163486"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Add1bitA.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Add1bitB.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Add1bitB"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/contraintes/AppCombi_top.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../contraintes/AppCombi_top.xdc"/>
+        <Attr Name="ImportTime" Val="1641412072"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
