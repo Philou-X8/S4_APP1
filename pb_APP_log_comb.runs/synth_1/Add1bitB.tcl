@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "F:/Xilinx/Projects/APP1/pb_APP_log_comb.runs/synth_1/Add1bitB.tcl"
+  variable script "F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.runs/synth_1/Add1bitB.tcl"
   variable category "vivado_synth"
 }
 
@@ -76,25 +76,29 @@ create_project -in_memory -part xc7z010clg400-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir F:/Xilinx/Projects/APP1/pb_APP_log_comb.cache/wt [current_project]
-set_property parent.project_path F:/Xilinx/Projects/APP1/pb_APP_log_comb.xpr [current_project]
+set_property webtalk.parent_dir F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.cache/wt [current_project]
+set_property parent.project_path F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part digilentinc.com:zybo-z7-10:part0:1.0 [current_project]
-set_property ip_output_repo f:/Xilinx/Projects/APP1/pb_APP_log_comb.cache/ip [current_project]
+set_property ip_output_repo f:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -vhdl2008 -library xil_defaultlib {
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_encodeur.vhd
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_refreshPmod.vhd
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_Top.vhd
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/synchro_module_v2.vhd
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/imports/src/AppCombi_top.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_encodeur.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_refreshPmod.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/imports/src/septSegments_Top.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/imports/src/synchro_module_v2.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/imports/src/AppCombi_top.vhd
 }
 read_vhdl -library xil_defaultlib {
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitA.vhd
-  F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitB.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitA.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitB.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add4bits.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Thermo2Bin.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/ThermoBitCounter.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Fct2_3.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -105,8 +109,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/constrs_1/imports/contraintes/AppCombi_top.xdc
-set_property used_in_implementation false [get_files F:/Xilinx/Projects/APP1/pb_APP_log_comb.srcs/constrs_1/imports/contraintes/AppCombi_top.xdc]
+read_xdc F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/constrs_1/imports/contraintes/AppCombi_top.xdc
+set_property used_in_implementation false [get_files F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/constrs_1/imports/contraintes/AppCombi_top.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

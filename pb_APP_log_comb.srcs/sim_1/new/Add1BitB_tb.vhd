@@ -21,6 +21,9 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+USE ieee.numeric_std.ALL;
+LIBRARY UNISIM;
+USE UNISIM.Vcomponents.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -66,9 +69,19 @@ begin
 
     tb : process
     begin
+        wait for 10ns;
+        a_sim <= '0';
+        b_sim <= '0';
+        ci_sim <= '0';
+        wait for 10ns;
         a_sim <= '0';
         b_sim <= '1';
         ci_sim <= '0';
+        wait for 10ns;
+        a_sim <= '1';
+        b_sim <= '1';
+        ci_sim <= '0';
+        wait for 10ns;
         
         -- do test here
         

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1705074075">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1705341881">
   <File Type="PA-TCL" Name="Add1bitB.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="Add1bitB_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Add1bitB_reports.tcl"/>
   <File Type="RDS-RDS" Name="Add1bitB.vds"/>
   <File Type="RDS-UTIL" Name="Add1bitB_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Add1bitB_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="Add1bitB.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Add1bitB_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="Add1bitB_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/src/septSegments_encodeur.vhd">
@@ -60,6 +63,30 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Add4bits.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Thermo2Bin.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ThermoBitCounter.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Fct2_3.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="Add1bitB"/>
@@ -86,7 +113,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>
