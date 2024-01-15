@@ -19,3 +19,15 @@ INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/Xilinx/Install/Vivado/2020.2/data/ip'.
 close_project
+open_project F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.xpr
+INFO: [Project 1-313] Project file moved from 'F:/Xilinx/Projects/APP1' since last save.
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.gen/sources_1', nor could it be found using path 'F:/Xilinx/Projects/APP1/pb_APP_log_comb.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/Xilinx/Install/Vivado/2020.2/data/ip'.
+close [ open F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add4bits.vhd w ]
+add_files F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add4bits.vhd
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Jan 13 13:58:55 2024...

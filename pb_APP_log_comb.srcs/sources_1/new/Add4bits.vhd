@@ -40,6 +40,7 @@ entity Add4bits is
 end Add4bits;
 
 architecture Behavioral of Add4bits is
+
     signal carry_vect : std_logic_vector(4 downto 0);
     
     component Add1bitB 

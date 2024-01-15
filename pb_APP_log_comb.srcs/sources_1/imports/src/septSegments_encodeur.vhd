@@ -107,7 +107,7 @@ o_Segent:  process (i_AFF)
             when "1100" => s_Seg  <= "0111001"; -- C 
             when "1101" => s_Seg  <= "1011110"; -- D 
             when "1110" => s_Seg  <= "1111001"; -- E
-            when "1111" => s_Seg  <= "1110001"; -- F 
+            when "1111" => s_Seg  <= "1110001"; -- F
             when others => s_Seg  <= "0000000";
        end case;
     end process;
