@@ -56,12 +56,11 @@ architecture Behavioral of Fct2_3 is
     end component;
     
 begin
-    --buff4_8 <= STD_LOGIC_VECTOR(shift_right( unsigned(ADCbin_in), 1 ));
-    --buff1_8 <= STD_LOGIC_VECTOR(shift_right( unsigned(ADCbin_in), 3 ));
-    buff4_8 <= '0' & ADCbin_in(3 downto 1);
-    buff1_8 <= "000" & ADCbin_in(3);
     
-    adder4bit : Add4bits
+    buff4_8 <= '0' & ADCbin_in(3 downto 1); -- bit shift once (equals 4/8)
+    buff1_8 <= "000" & ADCbin_in(3); -- bit shift 3 times (equal 1/8)
+    
+    adder4bit : Add4bits -- sum both bit shift (equals 5/8, close to 2/3)
     port map (
         aVect => buff1_8,
         bVect => buff4_8,

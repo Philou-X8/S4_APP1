@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -93,12 +94,14 @@ read_vhdl -vhdl2008 -library xil_defaultlib {
   F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/imports/src/AppCombi_top.vhd
 }
 read_vhdl -library xil_defaultlib {
-  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitA.vhd
   F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add1bitB.vhd
   F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Add4bits.vhd
   F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Thermo2Bin.vhd
   F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/ThermoBitCounter.vhd
   F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Fct2_3.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Decodeur3_8.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Parite.vhd
+  F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/ThermoValid.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

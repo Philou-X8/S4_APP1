@@ -30,6 +30,11 @@ entity AppCombi_top is
           i_btn       : in    std_logic_vector (3 downto 0); -- Boutons de la carte Zybo
           i_sw        : in    std_logic_vector (3 downto 0); -- Interrupteurs de la carte Zybo
           sysclk      : in    std_logic;                     -- horloge systeme
+          
+          i_S1        : in    std_logic;                     -- Bouton S1
+          i_S2        : in    std_logic;                     -- Bouton S2
+          i_ADCth     : in    std_logic_vector (11 downto 0);-- 12 bit Thermometrique
+          
           o_SSD       : out   std_logic_vector (7 downto 0); -- vers cnnecteur pmod afficheur 7 segments
           o_led       : out   std_logic_vector (3 downto 0); -- vers DELs de la carte Zybo
           o_led6_r    : out   std_logic;                     -- vers DEL rouge de la carte Zybo
@@ -53,6 +58,10 @@ architecture BEHAVIORAL of AppCombi_top is
    --
    signal d_AFF0            : std_logic_vector (3 downto 0):= "0000";
    signal d_AFF1            : std_logic_vector (3 downto 0):= "0000";
+   
+   
+   signal d_ADCbin          : std_logic_vector (3 downto 0):= "0000";   -- Thermo converti en 4 bits
+   signal d_error           : std_logic := '0';                         -- Thermo erreur de conversion
  
    
  component synchro_module_v2 is
@@ -73,18 +82,51 @@ architecture BEHAVIORAL of AppCombi_top is
            );
    end component;
    
+    -- THERMO TO BINARY --
+    component Thermo2Bin 
+        port (
+            adc12_vect : in std_logic_vector(11 downto 0);
+            adc4_vect : out STD_LOGIC_VECTOR(3 downto 0);
+            err_b : out std_logic
+        );
+    end component;
+    
+    -- LED ARRAY --
+    component Fct2_3 
+        port (
+            ADCbin_in : in STD_LOGIC_VECTOR(3 downto 0);
+            A2_3_out : out STD_LOGIC_VECTOR(2 downto 0)
+        );
+    end component;
+    component Decodeur3_8 
+        port (
+            A2_3_in : in std_logic_vector(2 downto 0);
+            LED_vect_out : out std_logic_vector(7 downto 0)
+        );
+    end component;
+    signal A2_3 : std_logic_vector(2 downto 0) := "000";
+    
+    -- PARITE --
+    component Parite 
+        port (
+            ADCbin : in std_logic_vector(3 downto 0);
+            S1 : in STD_LOGIC; -- 1 pour impaire, 0 pour paire
+            Parite_out : out STD_LOGIC
+        );
+    end component;
+    
 
 begin
-  
+    
     inst_synch : synchro_module_v2
-     generic map (const_CLK_syst_MHz => freq_sys_MHz)
-         port map (
+    generic map (const_CLK_syst_MHz => freq_sys_MHz)
+        port map (
             clkm         => sysclk,
             o_CLK_5MHz   => clk_5MHz,
             o_S_1Hz      => d_S_1Hz
         );  
 
-   inst_aff :  septSegments_Top 
+    inst_aff :  septSegments_Top 
        port map (
            clk    => clk_5MHz,
            -- donnee a afficher definies sur 8 bits : chiffre hexa position 1 et 0
@@ -93,19 +135,53 @@ begin
            o_AFFSSD_Sim   => open,   -- ne pas modifier le "open". Ligne pour simulations seulement.
            o_AFFSSD       => o_SSD   -- sorties directement adaptees au connecteur PmodSSD
        );
-                   
-                     
-   d_opa               <=  i_sw;                        -- operande A sur interrupteurs
-   d_opb               <=  i_btn;                       -- operande B sur boutons
-   d_cin               <=  '0';                     -- la retenue d'entrée alterne 0 1 a 1 Hz
-      
-   d_AFF0              <=  d_sum(3 downto 0);           -- Le resultat de votre additionneur affiché sur PmodSSD(0)
-   d_AFF1              <=  '0' & '0' & '0' & d_Cout;    -- La retenue de sortie affichée sur PmodSSD(1) (0 ou 1)
-   o_led6_r            <=  d_Cout;                      -- La led couleur représente aussi la retenue en sortie  Cout
-   o_pmodled           <=  d_opa & d_opb;               -- Les opérandes d'entrés reproduits combinés sur Pmod8LD
-   o_led (3 downto 0)  <=  '0' & '0' & '0' & d_S_1Hz;   -- La LED0 sur la carte représente la retenue d'entrée        
    
-   
+    -- Lecture Thermo2Bin
+    thermo12_4bit : Thermo2Bin
+    port map(
+        adc12_vect => i_ADCth,
+        adc4_vect => d_ADCbin,
+        err_b => d_error
+    );
+    -- Lecture Thermo2Bin -- FIN
+    
+    -- Array 8 leds
+    LED_arr_fact : Fct2_3
+    port map(
+        ADCbin_in => d_ADCbin,
+        A2_3_out => A2_3
+    );
+    
+    LED_arr_decode : Decodeur3_8
+    port map(
+        A2_3_in => A2_3,
+        LED_vect_out => o_pmodled
+    );
+    -- Array 8 leds -- FIN
+    
+    -- test Parite 
+    
+    LED_parite : Parite
+    port map(
+        ADCbin => d_ADCbin,
+        S1 => i_S1,
+        Parite_out => o_led(0)
+    );
+    -- TODO: Add the DEL2 of the thermometric card
+    -- test Parite -- FIN
+    
+    -- AUTRE
+    d_opa               <=  i_sw;                        -- operande A sur interrupteurs
+    d_opb               <=  i_btn;                       -- operande B sur boutons
+    d_cin               <=  '0';                     -- la retenue d'entrée alterne 0 1 a 1 Hz
+       
+    d_AFF0              <=  d_sum(3 downto 0);           -- Le resultat de votre additionneur affiché sur PmodSSD(0)
+    d_AFF1              <=  '0' & '0' & '0' & d_Cout;    -- La retenue de sortie affichée sur PmodSSD(1) (0 ou 1)
+    o_led6_r            <=  d_Cout;                      -- La led couleur représente aussi la retenue en sortie  Cout
+    o_pmodled           <=  d_opa & d_opb;               -- Les opérandes d'entrés reproduits combinés sur Pmod8LD
+    o_led (3 downto 0)  <=  '0' & '0' & '0' & d_S_1Hz;   -- La LED0 sur la carte représente la retenue d'entrée        
+    
+    
 end BEHAVIORAL;
 
 

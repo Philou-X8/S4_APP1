@@ -1,11 +1,8 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: F:/Xilinx/Install/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 6e88f38826214958bd01804f64fad5de --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Thermo2Bin_tb_behav xil_defaultlib.Thermo2Bin_tb -log elaborate.log 
+Running: F:/Xilinx/Install/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 6e88f38826214958bd01804f64fad5de --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot MUX_tb_behav xil_defaultlib.MUX_tb -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-3813] value in initialization depends on signal 'adc12_vect' [F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Thermo2Bin.vhd:66]
-WARNING: [VRFC 10-3813] value in initialization depends on signal 'adc12_vect' [F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Thermo2Bin.vhd:67]
-WARNING: [VRFC 10-3813] value in initialization depends on signal 'adc12_vect' [F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sources_1/new/Thermo2Bin.vhd:68]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -13,10 +10,12 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
-Compiling architecture behavioral of entity xil_defaultlib.ThermoBitCounter [thermobitcounter_default]
 Compiling architecture behavioral of entity xil_defaultlib.Add1bitB [add1bitb_default]
 Compiling architecture behavioral of entity xil_defaultlib.Add4bits [add4bits_default]
-Compiling architecture behavioral of entity xil_defaultlib.ThermoValid [thermovalid_default]
-Compiling architecture behavioral of entity xil_defaultlib.Thermo2Bin [thermo2bin_default]
-Compiling architecture behavioral of entity xil_defaultlib.thermo2bin_tb
-Built simulation snapshot Thermo2Bin_tb_behav
+Compiling architecture behavioral of entity xil_defaultlib.Moins_5 [moins_5_default]
+Compiling architecture behavioral of entity xil_defaultlib.Bin2DualBCD_S [bin2dualbcd_s_default]
+Compiling architecture behavioral of entity xil_defaultlib.Bin2DualBCD_NS [bin2dualbcd_ns_default]
+Compiling architecture behavioral of entity xil_defaultlib.Bin2DualBCD [bin2dualbcd_default]
+Compiling architecture behavioral of entity xil_defaultlib.MUX [mux_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux_tb
+Built simulation snapshot MUX_tb_behav

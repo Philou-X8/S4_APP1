@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Jan 15 13:04:42 2024
-# Process ID: 13000
+# Start of session at: Tue Jan 16 10:22:39 2024
+# Process ID: 15044
 # Current directory: F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.runs/synth_1
 # Command line: vivado.exe -log Add1bitB.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Add1bitB.tcl
 # Log file: F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.runs/synth_1/Add1bitB.vds
