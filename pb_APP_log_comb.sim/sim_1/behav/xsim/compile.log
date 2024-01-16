@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sim_1/new/MUX_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'MUX_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "F:/Xilinx/Projects/S4_APP1/pb_APP_log_comb.srcs/sim_1/imports/verif/AppCombi_top_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AppCombi_top_tb'

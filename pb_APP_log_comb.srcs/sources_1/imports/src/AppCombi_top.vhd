@@ -115,6 +115,15 @@ architecture BEHAVIORAL of AppCombi_top is
         );
     end component;
     
+    -- 7 SEGMENT LED ENCODING --
+    component MUX is
+    Port ( ADCbin : in STD_LOGIC_VECTOR (3 downto 0);
+           erreur : in STD_LOGIC;
+           BTN : in STD_LOGIC_VECTOR (1 downto 0);
+           S2 : in STD_LOGIC;
+           DAFF0 : out STD_LOGIC_VECTOR (3 downto 0);
+           DAFF1 : out STD_LOGIC_VECTOR (3 downto 0));
+    end component;
 
 begin
     
@@ -160,7 +169,6 @@ begin
     -- Array 8 leds -- FIN
     
     -- test Parite 
-    
     LED_parite : Parite
     port map(
         ADCbin => d_ADCbin,
@@ -170,16 +178,27 @@ begin
     -- TODO: Add the DEL2 of the thermometric card
     -- test Parite -- FIN
     
+    -- ultiplexeur
+    SEG_encode : MUX PORT MAP (
+           ADCbin => d_ADCbin,
+           erreur => d_error,
+           BTN => i_btn(1 downto 0),
+           S2 => i_s2,
+           DAFF0 => d_AFF0,
+           DAFF1 => d_AFF1
+           );
+    -- ultiplexeur -- FIN
+    
     -- AUTRE
     d_opa               <=  i_sw;                        -- operande A sur interrupteurs
     d_opb               <=  i_btn;                       -- operande B sur boutons
     d_cin               <=  '0';                     -- la retenue d'entrée alterne 0 1 a 1 Hz
        
-    d_AFF0              <=  d_sum(3 downto 0);           -- Le resultat de votre additionneur affiché sur PmodSSD(0)
-    d_AFF1              <=  '0' & '0' & '0' & d_Cout;    -- La retenue de sortie affichée sur PmodSSD(1) (0 ou 1)
-    o_led6_r            <=  d_Cout;                      -- La led couleur représente aussi la retenue en sortie  Cout
-    o_pmodled           <=  d_opa & d_opb;               -- Les opérandes d'entrés reproduits combinés sur Pmod8LD
-    o_led (3 downto 0)  <=  '0' & '0' & '0' & d_S_1Hz;   -- La LED0 sur la carte représente la retenue d'entrée        
+    --d_AFF0              <=  d_sum(3 downto 0);           -- Le resultat de votre additionneur affiché sur PmodSSD(0)
+    --d_AFF1              <=  '0' & '0' & '0' & d_Cout;    -- La retenue de sortie affichée sur PmodSSD(1) (0 ou 1)
+    --o_led6_r            <=  d_Cout;                      -- La led couleur représente aussi la retenue en sortie  Cout
+    --o_pmodled           <=  d_opa & d_opb;               -- Les opérandes d'entrés reproduits combinés sur Pmod8LD
+    --o_led (3 downto 0)  <=  '0' & '0' & '0' & d_S_1Hz;   -- La LED0 sur la carte représente la retenue d'entrée        
     
     
 end BEHAVIORAL;

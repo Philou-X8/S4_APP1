@@ -52,6 +52,11 @@ COMPONENT AppCombi_top
      i_btn       : in    std_logic_vector (3 downto 0); 
      i_sw        : in    std_logic_vector (3 downto 0); 
      sysclk      : in    std_logic; 
+     
+          i_S1        : in    std_logic;                     -- Bouton S1
+          i_S2        : in    std_logic;                     -- Bouton S2
+          i_ADCth     : in    std_logic_vector (11 downto 0);-- 12 bit Thermometrique
+          
      o_SSD       : out   std_logic_vector (7 downto 0); 
      o_led       : out   std_logic_vector (3 downto 0); 
      o_led6_r    : out   std_logic;        
@@ -60,8 +65,8 @@ COMPONENT AppCombi_top
 end COMPONENT;
 
    signal clk_sim       :  STD_LOGIC := '0';
-   signal pmodled_sim   :  STD_LOGIC_VECTOR (7 DOWNTO 0);
-   signal led_sim       :  STD_LOGIC_VECTOR (3 DOWNTO 0);
+   signal pmodled_sim   :  STD_LOGIC_VECTOR (7 DOWNTO 0) := "00000000";
+   signal led_sim       :  STD_LOGIC_VECTOR (3 DOWNTO 0) := "0000";
    signal led6_r_sim    :  STD_LOGIC := '0';
    signal SSD_sim       :  STD_LOGIC_VECTOR (7 DOWNTO 0) := "00000000";
    signal sw_sim        :  STD_LOGIC_VECTOR (3 DOWNTO 0) := "0000";
@@ -69,10 +74,15 @@ end COMPONENT;
    signal cin_sim       :  STD_LOGIC := '0';
    signal vecteur_test_sim   :  STD_LOGIC_VECTOR (13 DOWNTO 0) := (others => '0');
    signal resultat_attendu       :  STD_LOGIC_VECTOR (4 DOWNTO 0) := "00000";
+   
+   signal S1_sim    :  STD_LOGIC := '0';
+   signal S2_sim    :  STD_LOGIC := '0';
+   signal ADC_sim       :  STD_LOGIC_VECTOR (11 DOWNTO 0) := "000000000000";
 
 
    constant sysclk_Period  : time := 8 ns;
    
+   CONSTANT PERIOD    : time := 10 ns;
 
 
 ----------------------------------------------------------------------------
@@ -101,6 +111,9 @@ uut: AppCombi_top
    i_btn       =>   btn_sim,
    i_sw        =>   sw_sim,
    sysclk      =>   clk_sim,
+   i_S1        =>   S1_sim,
+   i_S2        =>   S2_sim,
+   i_ADCth     =>   ADC_sim,
    o_SSD       =>   SSD_sim,
    o_led       =>   led_sim,
    o_pmodled   =>   pmodled_sim,
@@ -125,30 +138,130 @@ uut: AppCombi_top
    
    ----------------------------------------
    -- test bench
-   tb : PROCESS
-       variable delai_sim : time  := 50 ns;
-       variable table_valeurs_adr : integer range 0 to 63;
-
-      BEGIN
-         -- Phase 1
-         wait for delai_sim;
-         table_valeurs_adr := 0;
-         -- simuler une sequence de valeurs a l'entree 
-         for index in 0 to   mem_valeurs_tests'length-1 loop
-              vecteur_test_sim <= mem_valeurs_tests(table_valeurs_adr);
-              sw_sim  <= vecteur_test_sim (8 downto 5);
-              btn_sim <= vecteur_test_sim (4 downto 1) ;
-              cin_sim <= vecteur_test_sim (0);
-			  resultat_attendu <= vecteur_test_sim(13 downto 9);
-              wait for delai_sim;
-			  --assert (resultat_attendu /= (probe_adder_result) ) report "Resultat pas celui prévu." severity warning; 
-              table_valeurs_adr := table_valeurs_adr + 1;
-			  if(table_valeurs_adr = 63) then
-				exit;
-			  end if;
-         end loop; 
-           
-         WAIT; -- will wait forever
-      END PROCESS;
+    tb : PROCESS
+    BEGIN
+        -- test 1 -- BCD non signe
+        BTN_sim <= "0000"; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        
+        -- test 2 -- HEX
+        BTN_sim <= "0001"; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        -- test 3 -- BCD signe -5
+        BTN_sim <= "0010"; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        -- test 4 -- LED arr 
+        BTN_sim <= "0000"; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        -- test 5 -- Parite impaire
+        S1_sim <= '1'; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        -- test 6 -- Parite paire
+        S1_sim <= '0'; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        -- test 7 -- Err avec BTN{1,1}
+        BTN_sim <= "0011"; 
+        ADC_sim <= "000000000000"; wait for PERIOD;
+        ADC_sim <= "000000000001"; wait for PERIOD;
+        ADC_sim <= "000000000011"; wait for PERIOD;
+        ADC_sim <= "000000000111"; wait for PERIOD;
+        ADC_sim <= "000000001111"; wait for PERIOD;
+        ADC_sim <= "000000011111"; wait for PERIOD;
+        ADC_sim <= "000000111111"; wait for PERIOD;
+        ADC_sim <= "000001111111"; wait for PERIOD;
+        ADC_sim <= "000011111111"; wait for PERIOD;
+        ADC_sim <= "000111111111"; wait for PERIOD;
+        ADC_sim <= "001111111111"; wait for PERIOD;
+        ADC_sim <= "011111111111"; wait for PERIOD;
+        ADC_sim <= "111111111111"; wait for PERIOD;
+        
+        -- test 8 -- Err de formatage
+        BTN_sim <= "0000"; 
+        ADC_sim <= "000000000100"; wait for PERIOD;
+        ADC_sim <= "000000010001"; wait for PERIOD;
+        ADC_sim <= "110111111111"; wait for PERIOD;
+        ADC_sim <= "111000000000"; wait for PERIOD;
+        
+        
+    WAIT; -- will wait forever 
+    END PROCESS;
 
 END Behavioral;

@@ -39,58 +39,59 @@ end Bin2DualBCD_S;
 
 architecture Behavioral of Bin2DualBCD_S is
 
+
 begin
     process (Moins5)
     begin
         case Moins5 is
             when "0000" =>
-                Code_signe <= "1111";
-                Unites_s <= "0101";
-            when "0001" =>
-                Code_signe <= "1111";
-                Unites_s <= "0100";
-            when "0010" =>
-                Code_signe <= "1111";
-                Unites_s <= "0011";
-            when "0011" =>
-                Code_signe <= "1111";
-                Unites_s <= "0010";
-            when "0100" =>
-                Code_signe <= "1111";
-                Unites_s <= "0001";
-            when "0101" =>
                 Code_signe <= "0000";
                 Unites_s <= "0000";
-            when "0110" =>
+            when "0001" =>
                 Code_signe <= "0000";
                 Unites_s <= "0001";
-            when "0111" =>
+            when "0010" =>
                 Code_signe <= "0000";
                 Unites_s <= "0010";
-            when "1000" =>
+            when "0011" =>
                 Code_signe <= "0000";
                 Unites_s <= "0011";
-            when "1001" =>
+            when "0100" =>
                 Code_signe <= "0000";
                 Unites_s <= "0100";
-            when "1010" =>
+            when "0101" =>
                 Code_signe <= "0000";
                 Unites_s <= "0101";
-            when "1011" =>
+            when "0110" =>
                 Code_signe <= "0000";
                 Unites_s <= "0110";
-            when "1100" =>
+            when "0111" =>
                 Code_signe <= "0000";
                 Unites_s <= "0111";
-            when "1101" =>
+            when "1000" =>
                 Code_signe <= "0000";
                 Unites_s <= "1000";
+            when "1001" =>
+                Code_signe <= "1111";
+                Unites_s <= "0111";
+            when "1010" =>
+                Code_signe <= "1111";
+                Unites_s <= "0110";
+            when "1011" =>
+                Code_signe <= "1111";
+                Unites_s <= "0101";
+            when "1100" =>
+                Code_signe <= "1111";
+                Unites_s <= "0100";
+            when "1101" =>
+                Code_signe <= "1111";
+                Unites_s <= "0011";
             when "1110" =>
-                Code_signe <= "0000";
-                Unites_s <= "1001";
+                Code_signe <= "1111";
+                Unites_s <= "0010";
             when "1111" =>
-                Code_signe <= "0000";
-                Unites_s <= "1010";
+                Code_signe <= "1111";
+                Unites_s <= "0001";
             when others =>
                 Code_signe <= "0000";
                 Unites_s <= "0000";

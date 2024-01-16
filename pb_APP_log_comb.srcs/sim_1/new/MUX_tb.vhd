@@ -38,10 +38,6 @@ architecture Behavioral of MUX_tb is
 
     component MUX is
     Port ( ADCbin : in STD_LOGIC_VECTOR (3 downto 0);
-           Dizaines : in STD_LOGIC_VECTOR (3 downto 0);
-           Unites_ns : in STD_LOGIC_VECTOR (3 downto 0);
-           Code_signe : in STD_LOGIC_VECTOR (3 downto 0);
-           Unites_s : in STD_LOGIC_VECTOR (3 downto 0);
            erreur : in STD_LOGIC;
            BTN : in STD_LOGIC_VECTOR (1 downto 0);
            S2 : in STD_LOGIC;
@@ -50,10 +46,6 @@ architecture Behavioral of MUX_tb is
     end component;
     
       signal ADCbin_sim : STD_LOGIC_VECTOR (3 downto 0);
-      signal Dizaines_sim : STD_LOGIC_VECTOR (3 downto 0);
-      signal Unites_ns_sim : STD_LOGIC_VECTOR (3 downto 0);
-      signal Code_signe_sim : STD_LOGIC_VECTOR (3 downto 0);
-      signal Unites_s_sim : STD_LOGIC_VECTOR (3 downto 0);
       signal erreur_sim : STD_LOGIC;
       signal BTN_sim : STD_LOGIC_VECTOR (1 downto 0);
       signal S2_sim : STD_LOGIC;
@@ -66,10 +58,6 @@ begin
 
     UUT : MUX PORT MAP (
            ADCbin => ADCBin_sim,
-           Dizaines => Dizaines_sim,
-           Unites_ns => Unites_ns_sim,
-           Code_signe => Code_signe_sim,
-           Unites_s => Unites_s_sim,
            erreur => erreur_sim,
            BTN => BTN_sim,
            S2 => s2_sim,
@@ -78,7 +66,7 @@ begin
            );
      tb : PROCESS
      BEGIN
-     -- Test 1 
+     -- Test 1 -- base 10
        wait for PERIOD; BTN_sim <= "00"; 
        wait for PERIOD; ADCbin_sim <= "0000";
        wait for PERIOD; ADCbin_sim <= "0001";
@@ -94,7 +82,7 @@ begin
        wait for PERIOD; ADCbin_sim <= "1011";
        wait for PERIOD; ADCbin_sim <= "1100";
        
-       -- TEST 2
+       -- TEST 2 - HEX
        wait for PERIOD; BTN_sim <= "01"; 
        wait for PERIOD; ADCbin_sim <= "0000";
        wait for PERIOD; ADCbin_sim <= "0001";
@@ -110,7 +98,7 @@ begin
        wait for PERIOD; ADCbin_sim <= "1011";
        wait for PERIOD; ADCbin_sim <= "1100";  
        
-       -- TEST 3
+       -- TEST 3 - negatif
        wait for PERIOD; BTN_sim <= "10"; 
        wait for PERIOD; ADCbin_sim <= "0000";
        wait for PERIOD; ADCbin_sim <= "0001";
@@ -126,7 +114,7 @@ begin
        wait for PERIOD; ADCbin_sim <= "1011";
        wait for PERIOD; ADCbin_sim <= "1100";
        
-       -- TEST 4
+       -- TEST 4 - Err
        wait for PERIOD; BTN_sim <= "11"; 
        wait for PERIOD; ADCbin_sim <= "0000";
        wait for PERIOD; ADCbin_sim <= "0001";
@@ -137,7 +125,7 @@ begin
        wait for PERIOD; ADCbin_sim <= "1011";
        wait for PERIOD; ADCbin_sim <= "1100";
        
-       -- TEST 5
+       -- TEST 5 - Err
        wait for PERIOD; s2_sim <= '1'; 
        wait for PERIOD; ADCbin_sim <= "0000";
        wait for PERIOD; ADCbin_sim <= "0001";

@@ -33,10 +33,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity MUX is
     Port ( ADCbin : in STD_LOGIC_VECTOR (3 downto 0);
-           Dizaines : in STD_LOGIC_VECTOR (3 downto 0);
-           Unites_ns : in STD_LOGIC_VECTOR (3 downto 0);
-           Code_signe : in STD_LOGIC_VECTOR (3 downto 0);
-           Unites_s : in STD_LOGIC_VECTOR (3 downto 0);
            erreur : in STD_LOGIC;
            BTN : in STD_LOGIC_VECTOR (1 downto 0);
            S2 : in STD_LOGIC;
@@ -102,6 +98,12 @@ begin
             DAFF0 <= "1110";
             DAFF1 <= "1101";
          end if;         
+         
+        if (erreur = '1') then
+            DAFF0 <= "1110";
+            DAFF1 <= "1101";
+        end if;
+            
          
     end process;
 end Behavioral;
