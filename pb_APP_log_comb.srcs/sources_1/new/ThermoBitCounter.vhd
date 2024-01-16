@@ -44,8 +44,8 @@ architecture Behavioral of ThermoBitCounter is
 
 begin
     thermo_block_out(3) <= '0';
-    thermo_block_out(2) <= thermo_block_in(2);
+    thermo_block_out(2) <= thermo_block_in(3);
     thermo_block_out(1) <= thermo_block_in(1) AND (NOT thermo_block_in(3)); -- CA'
-    thermo_block_out(0) <= (NOT thermo_block_in(1)) OR ( (NOT thermo_block_in(3)) AND thermo_block_in(2) ); -- C' + A'B
+    thermo_block_out(0) <= ( thermo_block_in(0) AND (NOT thermo_block_in(1)) ) OR ( thermo_block_in(2) AND (NOT thermo_block_in(3)) ); -- DC' + A'B
 
 end Behavioral;

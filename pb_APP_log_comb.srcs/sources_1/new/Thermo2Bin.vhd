@@ -46,6 +46,13 @@ architecture Behavioral of Thermo2Bin is
         );
     end component;
     
+    component ThermoValid 
+        port (
+            adc12_in : in std_logic_vector(11 downto 0);
+            err_out : out std_logic
+        );
+    end component;
+    
     component Add4bits 
         port (
             aVect : in STD_LOGIC_VECTOR(3 downto 0);
@@ -84,21 +91,26 @@ begin
     port map (
         aVect => block0_sum,
         bVect => block1_sum,
-        cin => block0_sum(0), -- unused bit
+        cin => block0_sum(3), -- unused bit
         sVect => block_buff,
-        cout => block1_sum(0) -- unused bit
+        cout => block1_sum(3) -- unused bit
     );
     block_adder_2 : Add4bits
     port map (
         aVect => block_buff,
         bVect => block2_sum,
-        cin => block0_sum(0), -- unused bit
+        cin => block0_sum(3), -- unused bit
         sVect => adc4_vect,
-        cout => block2_sum(0) -- unused bit
+        cout => block2_sum(3) -- unused bit
     );
     -- ENCODE 12 TO 4 -- END --
     
     -- CHECK FORMATING -- START --
     
+    formating : ThermoValid
+    port map(
+        adc12_in => adc12_vect,
+        err_out => err_b
+    );
     -- CHECK FORMATING -- END --
 end Behavioral;
